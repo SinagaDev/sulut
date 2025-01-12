@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="belanja_view_search" model="ir.ui.view">
+        <field name="name">belanja.view.search</field>
+        <field name="model">belanja</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="urusan_id"/>
+                <field name="skpd_id"/>
+                <field name="sub_unit_id"/>
+                <field name="bidang_urusan_id"/>
+                <field name="program_id"/>
+                <field name="kegiatan_id"/>
+                <field name="sub_kegiatan_id"/>
+                <field name="sumber_dana_id"/>
+                <field name="rekening_id"/>
+                <group expand="0" string="Group By">
+                    <filter string="Urusan" name="urusan" context="{'group_by': 'urusan_id'}"/>
+                    <filter string="SKPD" name="skpd" context="{'group_by': 'skpd_id'}"/>
+                    <filter string="Sub Unit" name="sub_unit" context="{'group_by': 'sub_unit_id'}"/>
+                    <filter string="Bidang Urusan" name="bidang_urusan" context="{'group_by': 'bidang_urusan_id'}"/>
+                    <filter string="Program" name="program" context="{'group_by': 'program_id'}"/>
+                    <filter string="Kegiatan" name="kegiatan" context="{'group_by': 'kegiatan_id'}"/>
+                    <filter string="Sub Kegiatan" name="sub_kegiatan" context="{'group_by': 'sub_kegiatan_id'}"/>
+                    <filter string="Sumber Dana" name="sumber_dana" context="{'group_by': 'sumber_dana_id'}"/>
+                    <filter string="Rekening" name="rekening" context="{'group_by': 'rekening_id'}"/>
+                </group>
+            </search>
+
+        </field>
+    </record>
+
+  <record id="belanja_view_tree" model="ir.ui.view">
+    <field name="name">belanja.view.tree</field>
+    <field name="model">belanja</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="tipe_apbd"/>
+        <field name="tahun"/>
+        <field name="urusan_id"/>
+        <field name="skpd_id"/>
+        <field name="sub_unit_id"/>
+        <field name="bidang_urusan_id"/>
+        <field name="program_id"/>
+        <field name="kegiatan_id"/>
+        <field name="sub_kegiatan_id"/>
+        <field name="sumber_dana_id"/>
+        <field name="rekening_id"/>
+        <field name="pagu" sum="Total Pagu"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="belanja_view_form" model="ir.ui.view">
+    <field name="name">belanja.view.form</field>
+    <field name="model">belanja</field>
+    <field name="arch" type="xml">
+      <form string="">
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="tahun"/>
+            <field name="urusan_id"/>
+            <field name="skpd_id"/>
+            <field name="sub_unit_id"/>
+            <field name="bidang_urusan_id"/>
+            <field name="program_id"/>
+            <field name="kegiatan_id"/>
+            <field name="sub_kegiatan_id"/>
+            <field name="sumber_dana_id"/>
+            <field name="rekening_id"/>
+            <field name="pagu" sum="Total Pagu"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="belanja_pivot" model="ir.ui.view">
+    <field name="name">belanja.pivot</field>
+    <field name="model">belanja</field>
+    <field name="arch" type="xml">
+      <pivot>
+        <field name="sub_unit_id" type="row"/>
+        <!-- <field name="bidang_urusan_id" type="row"/>
+        <field name="program_id" type="row"/> -->
+        <field name="tahun" type="col"/>
+        <field name="pagu" type="measure"/>
+      </pivot>
+    </field>
+  </record>
+
+  <record id="belanja_pergeseran1_pivot" model="ir.ui.view">
+    <field name="name">belanja.pergeseran1.pivot</field>
+    <field name="model">belanja</field>
+    <field name="arch" type="xml">
+      <pivot>
+        <field name="sub_unit_id" type="row"/>
+        <!-- <field name="bidang_urusan_id" type="row"/>
+        <field name="program_id" type="row"/> -->
+        <field name="tahun" type="col"/>
+        <field name="pagu" type="measure"/>
+      </pivot>
+    </field>
+  </record>
+  
+
+  <record id="act_belanja" model="ir.actions.act_window">
+    <field name="name">Pergeseran 1</field>
+    <field name="res_model">belanja</field>
+    <field name="view_mode">pivot,tree,form</field>
+    <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'pivot', 'view_id': ref('belanja_pivot')}),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('belanja_view_tree')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('belanja_view_form')}),
+    ]"/>
+    <field name="domain">[('tipe_apbd','=','pergeseran_1')]</field>
+  </record>
+
+  <record id="act_belanja_penetapan" model="ir.actions.act_window">
+    <field name="name">Penetapan</field>
+    <field name="res_model">belanja</field>
+    <field name="view_mode">pivot,tree,form</field>
+    <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'pivot', 'view_id': ref('belanja_pergeseran1_pivot')}),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('belanja_view_tree')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('belanja_view_form')}),
+    ]"/>
+    <field name="domain">[('tipe_apbd','=','penetapan')]</field>
+  </record>
+
+  <!-- This Menu Item must have a parent and an action -->
+  <menuitem id="belanja_menu_act" name="Pergeseran 1" parent="belanja_categ" action="act_belanja" sequence="2"/>
+  <menuitem id="belanja_penetapan_menu_act" name="Penetapan" parent="belanja_categ" action="act_belanja_penetapan" sequence="1"/>
+
+</odoo>

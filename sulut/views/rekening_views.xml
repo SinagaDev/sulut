@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="rekening_view_tree" model="ir.ui.view">
+    <field name="name">rekening.view.tree</field>
+    <field name="model">rekening</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="code"/>
+        <field name="tipe_akun"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="rekening_view_form" model="ir.ui.view">
+    <field name="name">rekening.view.form</field>
+    <field name="model">rekening</field>
+    <field name="arch" type="xml">
+      <form string="">
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="code"/>
+            <field name="tipe_akun"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  
+
+  <record id="act_rekening" model="ir.actions.act_window">
+    <field name="name">Rekening</field>
+    <field name="res_model">rekening</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <!-- This Menu Item must have a parent and an action -->
+  <menuitem id="rekening_menu_act" name="Rekening" parent="config_menu_categ" action="act_rekening" sequence="8"/>
+
+</odoo>

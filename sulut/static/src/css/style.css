@@ -1,0 +1,11 @@
+.pagu {
+    min-width: 220px !important;
+}
+.o_min {
+    min-width: 10px !important;
+    max-width: 80px !important;
+}
+.o_mid {
+    min-width: 80px !important;
+    max-width: 150px !important;
+}

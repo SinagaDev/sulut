@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bidang_urusan,bidang_urusan,model_bidang_urusan,base.group_user,1,1,1,1
+access_kegiatan,kegiatan,model_kegiatan,base.group_user,1,1,1,1
+access_sub_kegiatan,sub_kegiatan,model_sub_kegiatan,base.group_user,1,1,1,1
+access_program,program,model_program,base.group_user,1,1,1,1
+access_rekening,rekening,model_rekening,base.group_user,1,1,1,1
+access_skpd,skpd,model_skpd,base.group_user,1,1,1,1
+access_sub_unit,sub_unit,model_sub_unit,base.group_user,1,1,1,1
+access_sumber_dana,sumber_dana,model_sumber_dana,base.group_user,1,1,1,1
+access_urusan,urusan,model_urusan,base.group_user,1,1,1,1
+access_belanja,belanja,model_belanja,base.group_user,1,1,1,1
+access_data_penting,data_penting,model_data_penting,base.group_user,1,1,1,1
+access_sk_berjalan,sk_berjalan,model_sk_berjalan,base.group_user,1,1,1,1
+access_pendapatan,pendapatan,model_pendapatan,base.group_user,1,1,1,1
+access_pembiayaan,pembiayaan,model_pembiayaan,base.group_user,1,1,1,1
+access_import_master_data,import_master_data,model_import_master_data,base.group_user,1,1,1,1
+

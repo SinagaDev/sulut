@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="program_view_tree" model="ir.ui.view">
+    <field name="name">program.view.tree</field>
+    <field name="model">program</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="code"/>
+        <field name="bidang_urusan_id"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- program form view -->
+  <record id="program_view_form" model="ir.ui.view">
+    <field name="name">program.view.form</field>
+    <field name="model">program</field>
+    <field name="arch" type="xml">
+      <form string="">
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="code"/>
+            <field name="bidang_urusan_id"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="act_program" model="ir.actions.act_window">
+    <field name="name">Program</field>
+    <field name="res_model">program</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <!-- This Menu Item must have a parent and an action -->
+  <menuitem id="program_menu_act" name="Program" parent="config_menu_categ" action="act_program" sequence="4"/>
+
+</odoo>

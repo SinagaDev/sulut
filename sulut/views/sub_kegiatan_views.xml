@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="sub_kegiatan_view_tree" model="ir.ui.view">
+    <field name="name">sub.kegiatan.view.tree</field>
+    <field name="model">sub.kegiatan</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="code"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="sub_kegiatan_view_form" model="ir.ui.view">
+    <field name="name">sub.kegiatan.view.form</field>
+    <field name="model">sub.kegiatan</field>
+    <field name="arch" type="xml">
+      <form string="">
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="code"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  
+
+  <record id="act_sub_kegiatan" model="ir.actions.act_window">
+    <field name="name">Sub Kegiatan</field>
+    <field name="res_model">sub.kegiatan</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <!-- This Menu Item must have a parent and an action -->
+  <menuitem id="sub_kegiatan_menu_act" name="Sub Kegiatan" parent="config_menu_categ" action="act_sub_kegiatan" sequence="6"/>
+
+</odoo>

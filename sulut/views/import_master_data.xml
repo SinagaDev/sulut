@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <record id="import_master_data_sulut" model="ir.ui.view">
+        <field name="name">Import Master Data</field>
+        <field name="model">import.master.data</field>
+        <field name="arch" type="xml">
+            <form string="Import Master Data">
+                <sheet>
+                    <group>
+                        <field name="excel_file" filename="file_name"/>
+                        <field name="file_name" invisible="1"/>
+                        <field name="tipe_import" widget="radio"/>
+                    </group>
+                  <footer>
+                    <button name="import_kegiatan" string="Import Data" type="object" class="btn-success"/>
+                    or
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                  </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="import_master_data_action" model="ir.actions.act_window">
+        <field name="name">import.master.data.action</field>
+        <field name="res_model">import.master.data</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="import_master_data_sulut"/>
+    </record>
+
+    <menuitem id="import_master_data" action="import_master_data_action" name="Import Master Data" parent="sulut_menu_root" sequence="98"/>
+</odoo>

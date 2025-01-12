@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="bidang_urusan_view_tree" model="ir.ui.view">
+    <field name="name">urusan.view.tree</field>
+    <field name="model">bidang.urusan</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="code"/>
+        <field name="urusan_id"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="bidang_urusan_view_form" model="ir.ui.view">
+    <field name="name">urusan.view.form</field>
+    <field name="model">bidang.urusan</field>
+    <field name="arch" type="xml">
+      <form string="">
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="code"/>
+            <field name="urusan_id"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  
+
+  <record id="act_bidang_urusan" model="ir.actions.act_window">
+    <field name="name">Bidang Urusan</field>
+    <field name="res_model">bidang.urusan</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <!-- This Menu Item must have a parent and an action -->
+  <menuitem id="bidang_urusan_menu_act" name="Bidang Urusan" parent="config_menu_categ" action="act_bidang_urusan" sequence="5"/>
+
+</odoo>

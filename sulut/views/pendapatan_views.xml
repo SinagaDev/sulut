@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <record id="pendapatan_view_search" model="ir.ui.view">
+        <field name="name">pendapatan.view.search</field>
+        <field name="model">pendapatan</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="gt0" string="> 0" domain="[('pagu', '>', 0)]" />
+                <field name="sub_unit_id"/>
+                <field name="rekening_id"/>
+                <field name="uraian"/>
+                <field name="keterangan"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="pendapatan_view_tree" model="ir.ui.view">
+        <field name="name">pendapatan.view.tree</field>
+        <field name="model">pendapatan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="tahun"/>
+                <field name="rekening_id"/>
+                <field name="sub_unit_id"/>
+                <field name="uraian"/>
+                <field name="keterangan"/>
+                <field name="pagu"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="pendapatan_pivot" model="ir.ui.view">
+        <field name="name">pendapatan.pivot</field>
+        <field name="model">pendapatan</field>
+        <field name="arch" type="xml">
+            <pivot string="">
+                <field name="sub_unit_id" type="row"/>
+                <field name="rekening_id" type="row"/>
+                <field name="tahun" type="col"/>
+                <field name="pagu" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="act_pendapatan_penetapan" model="ir.actions.act_window">
+        <field name="name">Penetapan</field>
+        <field name="res_model">pendapatan</field>
+        <field name="view_mode">pivot,tree,form</field>
+        <field name="domain">[('tahun','=','2024')]</field>
+        <field name="context">{"search_default_gt0":1}</field>
+    </record>
+
+    <record id="act_pendapatan_pergeseran1" model="ir.actions.act_window">
+        <field name="name">Pergeseran 1</field>
+        <field name="res_model">pendapatan</field>
+        <field name="view_mode">pivot,tree,form</field>
+        <field name="domain">[('tahun','=','2024')]</field>
+        <field name="context">{"search_default_gt0":1}</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="pendapatan_penetapan_menu_act" name="Penetapan" parent="pendapatan_categ" action="act_pendapatan_penetapan" sequence="1"/>
+    <menuitem id="pendapatan_pergeseran1_menu_act" name="Pergeseran 1" parent="pendapatan_categ" action="act_pendapatan_pergeseran1" sequence="2"/>
+
+
+</odoo>

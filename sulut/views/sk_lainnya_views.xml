@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sk_berjalan_lainnya_view_search" model="ir.ui.view">
+        <field name="name">sk.berjalan.view.search</field>
+        <field name="model">sk.berjalan</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="barang_diserahkan" string="Barang Diserahkan" domain="[('tipe_data_penting', '=', 'barang_diserahkan')]" />
+                <filter name="hibah" string="Hibah" domain="[('tipe_data_penting', '=', 'hibah')]" />
+                <filter name="bansos" string="Bansos" domain="[('tipe_data_penting', '=', 'bansos')]" />
+                <filter name="lain_lain" string="Lain Lain" domain="[('tipe_data_penting', '=', 'lain_lain')]" />
+                <field name="judul_sk"/>
+                <field name="sub_unit_id"/>
+                <!-- <field name="data_penting_id"/> -->
+                <field name="uraian_ids" widget="many2many_tags"/>
+                <field name="tahun"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="sk_berjalan_lainnya_view_tree" model="ir.ui.view">
+        <field name="name">sk.berjalan.view.tree</field>
+        <field name="model">sk.berjalan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="judul_sk"/>
+                <field name="tipe_data_penting"/>
+                <field name="sub_unit_id"/>
+                <field name="data_penting_id" column_invisible="1"/>
+                <field name="uraian_ids" widget="many2many_tags"/>
+                <field name="nominal"/>
+                <field name="keterangan"/>
+                <field name="file_sk" filename="filename_sk" widget="binary"/>
+                <field name="filename_sk" column_invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- sk.berjalan form view -->
+    <record id="sk_berjalan_lainnya_view_form" model="ir.ui.view">
+        <field name="name">sk.berjalan.view.form</field>
+        <field name="model">sk.berjalan</field>
+        <field name="arch" type="xml">
+            <form>
+            <header>
+                <button name="act_submit" type="object" string="Submit" class="btn-success" invisible="state == 'submit'"/>
+                <field name="state" widget="statusbar"/>
+            </header>
+                <sheet>
+                    <group>
+                        <field name="judul_sk" required="1"/>
+                        <field name="sub_unit_id" required="1" readonly="state == 'submit'" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                        <field name="tipe_data_penting" required="1" readonly="state == 'submit'"/>
+                        <field name="data_penting_id" invisible="1" domain="[('tipe_data_penting','=',tipe_data_penting),('sub_unit_id','=',sub_unit_id),('x_studio_is_2025','=',False)]" readonly="state == 'submit'" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                        <field name="uraian_ids" required="1" domain="[('tipe_data_penting','=',tipe_data_penting),('sub_unit_id','=',sub_unit_id),('x_studio_is_2025','=',False)]" readonly="state == 'submit'" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                        <field name="nominal" required="1" readonly="state == 'submit'"/>
+                        <field name="keterangan" required="1" readonly="state == 'submit'"/>
+                        <field name="file_sk" widget="binary" filename="filename_sk" required="1" readonly="state == 'submit'"/>
+                        <field name="filename_sk" invisible="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sk_berjalan_lainnya_view_pivot" model="ir.ui.view">
+        <field name="name">sk.berjalan.pivot</field>
+        <field name="model">sk.berjalan</field>
+        <field name="arch" type="xml">
+            <pivot string="">
+                <field name="tipe_data_penting" type="row"/>
+                <field name="sub_unit_id" type="row"/>
+                <field name="data_penting_id" type="row"/>
+                <field name="uraian_ids" type="row"/>
+                <field name="nominal" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="act_sk_lainnya" model="ir.actions.act_window">
+        <field name="name">SK Lainnya</field>
+        <field name="res_model">sk.berjalan</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('sk_berjalan_lainnya_view_tree')}),
+            (0, 0, {'view_mode': 'pivot', 'view_id': ref('sk_berjalan_lainnya_view_pivot')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('sk_berjalan_lainnya_view_form')}),
+        ]"/>
+        <field name="domain">[('tahun','=','2024'),('tipe_sk','=','lainnya')]</field>
+        <field name="context">{'default_tahun':'2024','default_tipe_sk':'lainnya'}</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="sk_lainnya_menu_act" name="SK Lainnya" parent="sk_berjalan_menu_act" action="act_sk_lainnya" sequence="2"/>
+
+</odoo>

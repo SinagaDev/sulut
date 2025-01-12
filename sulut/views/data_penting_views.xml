@@ -1,0 +1,342 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <record id="data_penting_view_search" model="ir.ui.view">
+        <field name="name">data.penting.view.search</field>
+        <field name="model">data.penting</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="sub_unit_id"/>
+                <field name="uraian"/>
+                <field name="keterangan"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="barang_diserahkan_view_tree" model="ir.ui.view">
+        <field name="name">barang.diserahkan.view.tree</field>
+        <field name="model">data.penting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sub_unit_id"/>
+                <field name="uraian"/>
+                <field name="pagu_induk_2023" class="pagu" sum="Total Pagu Induk 2023"/>
+                <field name="pagu_perubahan_2023" class="pagu" sum="Total Pagu Perubahan 2023"/>
+                <field name="insentif_fiskal" class="pagu" sum="Total Insentif Fiskal"/>
+                <field name="pagu_induk_2024" class="pagu" sum="Total Pagu Induk 2024"/>
+                <field name="keterangan"/>
+                <field name="file_sk" widget="binary"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="barang_diserahkan_view_form" model="ir.ui.view">
+        <field name="name">barang.diserahkan.view.form</field>
+        <field name="model">data.penting</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="tipe_data_penting"/>
+                        <field name="sub_unit_id"/>
+                        <field name="uraian"/>
+                        <field name="pagu_induk_2023"/>
+                        <field name="pagu_perubahan_2023"/>
+                        <field name="insentif_fiskal"/>
+                        <field name="pagu_induk_2024"/>
+                        <field name="keterangan"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="barang_diserahkan_pivot" model="ir.ui.view">
+        <field name="name">barang.diserahkan.pivot</field>
+        <field name="model">data.penting</field>
+        <field name="arch" type="xml">
+            <pivot string="">
+                <field name="sub_unit_id" type="row"/>
+                <field name="uraian" type="row"/>
+                <field name="keterangan" type="row"/>
+                <field name="pagu_induk_2023" type="measure"/>
+                <field name="pagu_perubahan_2023" type="measure"/>
+                <field name="insentif_fiskal" type="measure"/>
+                <field name="pagu_induk_2024" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="hibah_view_tree" model="ir.ui.view">
+        <field name="name">hibah.view.tree</field>
+        <field name="model">data.penting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sub_unit_id"/>
+                <field name="uraian"/>
+                <field name="pagu_induk_2023" class="pagu" sum="Total Pagu Induk 2023"/>
+                <field name="pagu_perubahan_2023" class="pagu" sum="Total Pagu Perubahan 2023"/>
+                <field name="pagu_induk_2024" class="pagu" sum="Total Pagu Induk 2024"/>
+                <field name="keterangan"/>
+                <field name="file_sk" widget="binary"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hibah_view_form" model="ir.ui.view">
+        <field name="name">hibah.view.form</field>
+        <field name="model">data.penting</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="tipe_data_penting"/>
+                        <field name="sub_unit_id"/>
+                        <field name="uraian"/>
+                        <field name="pagu_induk_2023"/>
+                        <field name="pagu_perubahan_2023"/>
+                        <field name="pagu_induk_2024"/>
+                        <field name="keterangan"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hibah_pivot" model="ir.ui.view">
+        <field name="name">hibah.pivot</field>
+        <field name="model">data.penting</field>
+        <field name="arch" type="xml">
+            <pivot string="">
+                <field name="sub_unit_id" type="row"/>
+                <field name="uraian" type="row"/>
+                <field name="keterangan" type="row"/>
+                <field name="pagu_induk_2023" type="measure"/>
+                <field name="pagu_perubahan_2023" type="measure"/>
+                <field name="pagu_induk_2024" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="bansos_view_tree" model="ir.ui.view">
+        <field name="name">bansos.view.tree</field>
+        <field name="model">data.penting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sub_unit_id"/>
+                <field name="uraian"/>
+                <field name="pagu_induk_2023" class="pagu" sum="Total Pagu Induk 2023"/>
+                <field name="pagu_perubahan_2023" class="pagu" sum="Total Pagu Perubahan 2023"/>
+                <field name="pagu_induk_2024" class="pagu" sum="Total Pagu Induk 2024"/>
+                <field name="keterangan"/>
+                <field name="file_sk" widget="binary"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="bansos_view_form" model="ir.ui.view">
+        <field name="name">bansos.view.form</field>
+        <field name="model">data.penting</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="tipe_data_penting"/>
+                        <field name="sub_unit_id"/>
+                        <field name="uraian"/>
+                        <field name="pagu_induk_2023"/>
+                        <field name="pagu_perubahan_2023"/>
+                        <field name="pagu_induk_2024"/>
+                        <field name="keterangan"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="bansos_pivot" model="ir.ui.view">
+        <field name="name">bansos.pivot</field>
+        <field name="model">data.penting</field>
+        <field name="arch" type="xml">
+            <pivot string="">
+                <field name="sub_unit_id" type="row"/>
+                <field name="uraian" type="row"/>
+                <field name="keterangan" type="row"/>
+                <field name="pagu_induk_2023" type="measure"/>
+                <field name="pagu_perubahan_2023" type="measure"/>
+                <field name="pagu_induk_2024" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="lain_lain_view_tree" model="ir.ui.view">
+        <field name="name">lain.lain.view.tree</field>
+        <field name="model">data.penting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sub_unit_id" class="o_mid"/>
+                <field name="uraian" class="o_min"/>
+                <field name="pagu_induk_2023" class="pagu" sum="Total Pagu Induk 2023"/>
+                <field name="pagu_perubahan_2023" class="pagu" sum="Total Pagu Perubahan 2023"/>
+                <field name="pagu_induk_2024" class="pagu" sum="Total Pagu Induk 2024"/>
+                <field name="keterangan" class="o_min"/>
+                <field name="file_sk" widget="binary"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="lain_lain_view_form" model="ir.ui.view">
+        <field name="name">lain.lain.view.form</field>
+        <field name="model">data.penting</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="tipe_data_penting"/>
+                        <field name="sub_unit_id"/>
+                        <field name="uraian"/>
+                        <field name="pagu_induk_2023"/>
+                        <field name="pagu_perubahan_2023"/>
+                        <field name="pagu_induk_2024"/>
+                        <field name="keterangan"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="lain_lain_pivot" model="ir.ui.view">
+        <field name="name">lain.lain.pivot</field>
+        <field name="model">data.penting</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="sub_unit_id" type="row"/>
+                <field name="uraian" type="row"/>
+                <field name="keterangan" type="row"/>
+                <field name="pagu_induk_2023" type="measure"/>
+                <field name="pagu_perubahan_2023" type="measure"/>
+                <field name="pagu_induk_2024" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="semua_data_penting_view_tree" model="ir.ui.view">
+        <field name="name">semua.data.penting.view.tree</field>
+        <field name="model">data.penting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="tipe_data_penting" string="Tipe"/>
+                <field name="sub_unit_id"/>
+                <field name="uraian"/>
+                <field name="pagu_induk_2023" class="pagu" sum="Total Pagu Induk 2023"/>
+                <field name="pagu_perubahan_2023" class="pagu" sum="Total Pagu Perubahan 2023"/>
+                <field name="pagu_induk_2024" class="pagu" sum="Total Pagu Induk 2024"/>
+                <field name="keterangan"/>
+                <field name="file_sk" widget="binary"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="semua_data_penting_view_form" model="ir.ui.view">
+        <field name="name">semua.data.penting.view.form</field>
+        <field name="model">data.penting</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="tipe_data_penting"/>
+                        <field name="sub_unit_id"/>
+                        <field name="uraian"/>
+                        <field name="pagu_induk_2023"/>
+                        <field name="pagu_perubahan_2023"/>
+                        <field name="pagu_induk_2024"/>
+                        <field name="keterangan"/>
+                        <field name="file_sk" filename="filename_sk" widget="binary"/>
+                        <field name="filename_sk" invisible="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="semua_data_penting_pivot" model="ir.ui.view">
+        <field name="name">semua.data.penting.pivot</field>
+        <field name="model">data.penting</field>
+        <field name="arch" type="xml">
+            <pivot string="">
+                <field name="sub_unit_id" type="row"/>
+                <field name="tipe_data_penting" type="row"/>
+                <field name="pagu_induk_2023" type="measure"/>
+                <field name="pagu_perubahan_2023" type="measure"/>
+                <field name="insentif_fiskal" type="measure"/>
+                <field name="pagu_induk_2024" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="act_barang_diserahkan" model="ir.actions.act_window">
+    <field name="name">Barang Diserahkan</field>
+    <field name="res_model">data.penting</field>
+    <field name="view_mode">tree,pivot,form</field>
+    <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('barang_diserahkan_view_tree')}),
+        (0, 0, {'view_mode': 'pivot', 'view_id': ref('barang_diserahkan_pivot')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('barang_diserahkan_view_form')}),
+    ]"/>
+    <field name="domain">[('tipe_data_penting','=','barang_diserahkan'),('x_studio_is_2025','!=',True)]</field>
+  </record>
+
+  <record id="act_hibah" model="ir.actions.act_window">
+    <field name="name">Hibah</field>
+    <field name="res_model">data.penting</field>
+    <field name="view_mode">tree,pivot,form</field>
+    <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('hibah_view_tree')}),
+        (0, 0, {'view_mode': 'pivot', 'view_id': ref('hibah_pivot')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('hibah_view_form')}),
+    ]"/>
+    <field name="domain">[('tipe_data_penting','=','hibah'),('x_studio_is_2025','!=',True)]</field>
+  </record>
+
+  <record id="act_bansos" model="ir.actions.act_window">
+    <field name="name">Bansos</field>
+    <field name="res_model">data.penting</field>
+    <field name="view_mode">tree,pivot,form</field>
+    <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('bansos_view_tree')}),
+        (0, 0, {'view_mode': 'pivot', 'view_id': ref('bansos_pivot')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('bansos_view_form')}),
+    ]"/>
+    <field name="domain">[('tipe_data_penting','=','bansos'),('x_studio_is_2025','!=',True)]</field>
+  </record>
+
+  <record id="act_lain_lain" model="ir.actions.act_window">
+    <field name="name">Lain-Lain</field>
+    <field name="res_model">data.penting</field>
+    <field name="view_mode">tree,pivot,form</field>
+    <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('lain_lain_view_tree')}),
+        (0, 0, {'view_mode': 'pivot', 'view_id': ref('lain_lain_pivot')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('lain_lain_view_form')}),
+    ]"/>
+    <field name="domain">[('tipe_data_penting','=','lain_lain'),('x_studio_is_2025','!=',True)]</field>
+  </record>
+
+  <record id="act_semua_data_penting" model="ir.actions.act_window">
+    <field name="name">Semua Data Penting</field>
+    <field name="res_model">data.penting</field>
+    <field name="view_mode">pivot,tree,form</field>
+    <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'pivot', 'view_id': ref('semua_data_penting_pivot')}),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('semua_data_penting_view_tree')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('semua_data_penting_view_form')}),
+    ]"/>
+    <field name="domain">[('x_studio_is_2025','!=',True)]</field>
+  </record>
+
+    <menuitem id="data_penting_semua_menu_act" name="Semua Data" parent="data_penting_categ" action="act_semua_data_penting" sequence="1"/>
+    <menuitem id="data_penting_barang_diserahkan_menu_act" name="Barang Diserahkan" parent="data_penting_categ" action="act_barang_diserahkan" sequence="2"/>
+    <menuitem id="data_penting_hibah_menu_act" name="Hibah" parent="data_penting_categ" action="act_hibah" sequence="3"/>
+    <menuitem id="data_penting_bansos_menu_act" name="Bansos" parent="data_penting_categ" action="act_bansos" sequence="4"/>
+    <menuitem id="data_penting_lain_lain_menu_act" name="Lain-Lain" parent="data_penting_categ" action="act_lain_lain" sequence="5"/>
+</odoo>
