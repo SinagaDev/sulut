@@ -3,6 +3,7 @@ from odoo import _, api, fields, models
 
 class SubKegiatan(models.Model):
     _name = 'sub.kegiatan'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Master Data Sub Kegiatan'
     # _rec_name = 'code'
     
@@ -17,6 +18,6 @@ class SubKegiatan(models.Model):
             result.append((record.id, name))
         return result
 
-    name = fields.Char(string='Name')
-    code = fields.Char('Code')
-    kegiatan_id = fields.Many2one('kegiatan', string='Kegiatan')
+    name = fields.Char(string='Name', tracking=True)
+    code = fields.Char('Code', tracking=True)
+    kegiatan_id = fields.Many2one('kegiatan', string='Kegiatan', tracking=True)

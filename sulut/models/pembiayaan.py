@@ -12,6 +12,7 @@ class Pembiayaan(models.Model):
     pagu_char = fields.Char('Pagu Char')
     pagu = fields.Float('Pagu', compute='_compute_pagu', store=True)
     tipe_pembiayaan = fields.Selection([
+        ('ranwal_rkpd', 'Ranwal RKPD'),
         ('penetapan', 'Penetapan'),
         ('pergeseran_1', 'Pergeseran 1'),
         ('pergeseran_1_setelah_perubahan_apbd', 'Pergeseran 1 setelah Perubahan APBD'),
@@ -29,7 +30,7 @@ class Pembiayaan(models.Model):
         ('penetapan_perubahan_apbd', 'Penetapan Perubahan APBD'),
         ('penyempurnaan_perubahan_apbd', 'Penyempurnaan Perubahan APBD'),
         ('ranwal_apbd', 'Ranwal Penetapan APBD'),
-        ('rapd_ke_kemendagri', 'RAPBD ke Kemendagri'),
+        ('rapbd_ke_kemendagri', 'RAPBD ke Kemendagri'),
     ], string='Tahapan Pembiayaan')
     uraian = fields.Char('Uraian')
     keterangan = fields.Char('Keterangan')

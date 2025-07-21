@@ -3,6 +3,7 @@ from odoo import _, api, fields, models
 
 class SumberDana(models.Model):
     _name = 'sumber.dana'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Sumber Dana'
     # _rec_name = 'code'
     
@@ -17,5 +18,5 @@ class SumberDana(models.Model):
             result.append((record.id, name))
         return result
 
-    name = fields.Char(string='Name')
-    code = fields.Char('Code')
+    name = fields.Char(string='Name', tracking=True)
+    code = fields.Char('Code', tracking=True)

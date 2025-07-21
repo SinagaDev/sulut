@@ -8,12 +8,12 @@
             <form string="Import Master Data">
                 <sheet>
                     <group>
-                        <field name="excel_file" filename="file_name"/>
+                        <field name="excel_file" filename="file_name" required="1"/>
                         <field name="file_name" invisible="1"/>
                         <field name="tipe_import" widget="radio"/>
                     </group>
                   <footer>
-                    <button name="import_kegiatan" string="Import Data" type="object" class="btn-success"/>
+                    <button name="import_data" string="Import Data" type="object" class="btn-success"/>
                     or
                     <button string="Cancel" class="btn-secondary" special="cancel"/>
                   </footer>
@@ -23,7 +23,7 @@
     </record>
 
     <record id="import_master_data_action" model="ir.actions.act_window">
-        <field name="name">import.master.data.action</field>
+        <field name="name">Import Master Data</field>
         <field name="res_model">import.master.data</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>

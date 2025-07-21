@@ -3,7 +3,9 @@ from odoo import _, api, fields, models
 
 class Rekening(models.Model):
     _name = 'rekening'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Master Data Rekening'
+    _order = 'code asc'
     # _rec_name = 'code'
     
     @api.depends('name', 'code')
@@ -17,15 +19,15 @@ class Rekening(models.Model):
             result.append((record.id, name))
         return result
 
-    name = fields.Char(string='Name')
-    code = fields.Char('Code')
+    name = fields.Char(string='Name', tracking=True)
+    code = fields.Char('Code', tracking=True)
     pagu = fields.Float('Pagu', compute='compute_pagu', store=True)
     pagu_char = fields.Char('Pagu Char')
     tipe_akun = fields.Selection([
         ('belanja', 'Belanja'),
         ('pendapatan', 'Pendapatan'),
         ('pembiayaan', 'Pembiayaan'),
-    ], string='Tipe Akun')
+    ], string='Tipe Akun', tracking=True)
     @api.depends('pagu_char')
     def compute_pagu(self):
         for rec in self:
