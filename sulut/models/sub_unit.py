@@ -4,7 +4,7 @@ from odoo import _, api, fields, models
 class SubUnit(models.Model):
     _name = 'sub.unit'
     _description = 'Master Data Sub Unit'
-    _rec_name = 'code'
+    # _rec_name = 'code'
     _order = 'code asc'
     
     @api.depends('name', 'code')

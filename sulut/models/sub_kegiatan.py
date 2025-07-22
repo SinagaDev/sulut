@@ -5,7 +5,7 @@ class SubKegiatan(models.Model):
     _name = 'sub.kegiatan'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Master Data Sub Kegiatan'
-    _rec_name = 'code'
+    # _rec_name = 'code'
     
     @api.depends('name', 'code')
     def name_get(self):
