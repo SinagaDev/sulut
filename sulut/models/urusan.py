@@ -5,6 +5,7 @@ class Urusan(models.Model):
     _name = 'urusan'
     _description = 'Master Data Urusan'
     # _rec_name = 'code'
+    _order = 'code asc'
     
     @api.depends('name', 'code')
     def name_get(self):

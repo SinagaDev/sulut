@@ -5,6 +5,7 @@ class SKPD(models.Model):
     _name = 'skpd'
     _description = 'Master Data SKPD'
     # _rec_name = 'code'
+    _order = 'code asc'
     
     @api.depends('name', 'code')
     def name_get(self):
