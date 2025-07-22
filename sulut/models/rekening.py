@@ -6,7 +6,7 @@ class Rekening(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Master Data Rekening'
     _order = 'code asc'
-    # # _rec_name = 'code'
+    # _rec_name = 'code'
     
     @api.depends('name', 'code')
     def name_get(self):

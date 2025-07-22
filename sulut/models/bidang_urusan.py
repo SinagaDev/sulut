@@ -4,7 +4,7 @@ from odoo import _, api, fields, models
 class BidangUrusan(models.Model):
     _name = 'bidang.urusan'
     _description = 'Master Data Bidang Urusan'
-    # # _rec_name = 'code'
+    # _rec_name = 'code'
     
     
     @api.depends('name', 'code')
