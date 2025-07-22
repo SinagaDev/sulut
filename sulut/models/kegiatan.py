@@ -6,6 +6,7 @@ class Kegiatan(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Master Data Kegiatan'
     # _rec_name = 'code'
+    _order = 'code asc'
     
     @api.depends('name', 'code')
     def name_get(self):
