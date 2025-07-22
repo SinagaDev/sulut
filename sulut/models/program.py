@@ -5,7 +5,7 @@ class Program(models.Model):
     _name = 'program'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Master Data Program'
-    # _rec_name = 'code'
+    # # _rec_name = 'code'
     
     @api.depends('name', 'code')
     def name_get(self):
